@@ -60,7 +60,7 @@ $permissionsEdit = in_array(strtolower('.' . pathinfo($filename, PATHINFO_EXTENS
 
 $editorConfigMode =  "view";
 
-if(!empty($user->rights->oofficeconnector->template->write))
+if(!empty($user->rights->oofficeconnector->template->write) && !empty($conf->global->OOFFICE_ACTIVE_SAVE_FILE))
 {
     $editorConfigMode =  "edit";
 }
