@@ -28,6 +28,10 @@ if(empty($conf->oofficeconnector->enabled)){
 
 // TODO factor for file-server.php too
 // TODO use OOfficeDocuments class to factor this part
+//   see
+//      - document-server-interface.json.php
+//      - document-view.php
+//      - file-server.php
 // Securite acces client
 $accessforbidden = true;
 if($modulepart === 'documentstemplates'
@@ -119,22 +123,22 @@ $params = [
             // Next conf are not available in community edition
 
             // Contains the information which will be displayed int the editor About section and visible to all the editor users. The object has the following parameters:
-            "customer"=> [
-                "address"=> "My City, 123a-45",
-                "info"=> "Some additional information",
-                "logo"=> "https://example.com/logo-big.png",
-                "mail"=> "john@example.com",
-                "name"=> "John Smith and Co.",
-                "www"=> "example.com"
-            ],
+//            "customer"=> [
+//                "address"=> "My City, 123a-45",
+//                "info"=> "Some additional information",
+//                "logo"=> "https://example.com/logo-big.png",
+//                "mail"=> "john@example.com",
+//                "name"=> "John Smith and Co.",
+//                "www"=> "example.com"
+//            ],
             // Changes the image file at the top left corner of the Editor header. The recommended image height is 20 pixels. The object has the following parameters:
-            "logo"=> [
-                    "image"=> [
-                    "https://example.com/logo.png", // path to the image file used to show in common work mode (i.e. in view and edit modes for all editors). The image must have the following size: 172x40,
-                    "imageEmbedded"=>  "https://example.com/logo_em.png", // path to the image file used to show in the embedded mode (see the config section to find out how to define the embedded document type). The image must have the following size: 248x40,
-                    "url"=>  "https://www.onlyoffice.com" // the absolute URL which will be used when someone clicks the logo image (can be used to go to your web site, etc.). Leave as an empty string or null to make the logo not clickable,
-                ]
-            ],
+//            "logo"=> [
+//                    "image"=> [
+//                    "https://example.com/logo.png", // path to the image file used to show in common work mode (i.e. in view and edit modes for all editors). The image must have the following size: 172x40,
+//                    "imageEmbedded"=>  "https://example.com/logo_em.png", // path to the image file used to show in the embedded mode (see the config section to find out how to define the embedded document type). The image must have the following size: 248x40,
+//                    "url"=>  "https://www.onlyoffice.com" // the absolute URL which will be used when someone clicks the logo image (can be used to go to your web site, etc.). Leave as an empty string or null to make the logo not clickable,
+//                ]
+//            ],
 
             /*
              // Defines settings for the Feedback & Support menu button. Can be either boolean (simply displays or hides the Feedback & Support menu button) or object. In case of object type the following parameters are available:
@@ -146,11 +150,16 @@ $params = [
     ],
     "type" => $type
 ];
-$goBackUrl = "http://atm-consulting.fr";
+
 if(!empty($goBackUrl)){
     $params["editorConfig"]["customization"]["goback"]["url"] = $goBackUrl;
     $params["editorConfig"]["customization"]["goback"]["text"] = $langs->trans('GobackToDolibarr');
 }
+
+if(empty($conf->global->OOFFICE_ACTIVE_SAVE_FILE)){
+    unset($params["editorConfig"]["callbackUrl"]);
+}
+
 
 $token = \Firebase\JWT\JWT::encode($params, $OOffice->documentServerSecureKey);
 $params['token'] = $token ;

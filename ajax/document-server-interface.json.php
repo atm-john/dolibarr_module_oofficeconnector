@@ -48,7 +48,7 @@ if (isset($_GET["type"]) && !empty($_GET["type"])) { //Checks if type value exis
 
 
 function _track() {
-    global $db;
+    global $db, $conf;
 
     $OOffice = new OOfficeConnector($db);
 
@@ -84,6 +84,13 @@ function _track() {
 
 
     $result["error"] = 0;
+
+
+
+    if(empty($conf->global->OOFFICE_ACTIVE_SAVE_FILE)){
+        $result["error"] = "Bad Request : save feature disabled";
+        return $result;
+    }
 
     if (($body_stream = file_get_contents('php://input'))===FALSE) {
         $result["error"] = "Bad Request";
@@ -144,6 +151,10 @@ function _track() {
 
 
             // TODO use OOfficeDocuments class to factor this part
+            //   see
+            //      - document-server-interface.json.php
+            //      - document-view.php
+            //      - file-server.php
 
             $storagePath = '';
 

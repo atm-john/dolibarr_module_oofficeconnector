@@ -78,3 +78,5 @@ MyWidgetDescription = Description de mon widget
 #
 ConfDocServUrlNotDefined=L'Url du serveur de document ONLYOFFICE n'est pas défini
 ConfDocServUrlNotValid=L'Url du serveur de document ONLYOFFICE n'est pas valide
+
+OnlyOfficeDocServerCanSaveFile = Permettre la modification des fichier par ONLYOFFICE

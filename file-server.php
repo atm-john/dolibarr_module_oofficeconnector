@@ -29,9 +29,20 @@ $attachment=GETPOST('attachment', 'int');
 
 $filename = basename($file);
 
+
+
+// TODO : check file extension is Ok to download
+
+// TODO : Check
+
+
+
 // TODO factor for document-view.php too
 if($modulepart === 'documentstemplates'){
     $rootPath = DOL_DATA_ROOT.'/';
+}else{
+    print 'no access to '.$file;
+    exit;
 }
 
 //$OOffice->getDocumentInfo($modulepart,$file,$user,$params = array(), $conf->entity);

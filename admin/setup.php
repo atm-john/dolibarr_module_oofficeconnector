@@ -90,8 +90,6 @@ dol_fiche_head($head, 'settings', '', -1, "oofficeconnector@oofficeconnector");
 // Setup page goes here
 echo '<span class="opacitymedium">'.$langs->trans("OOfficeConnectorSetupPage").'</span><br><br>';
 
-// Work in progresse message
-print '<div class="error" >ATTENTION : ce module est en cours de développement, il ne doit pas être déployé en production ou sur un serveur public au risque d\'exposer votre server à des hackers</div>';
 
 /*
  *  Numbering module
@@ -185,6 +183,12 @@ $metas = array(
 );
 _printInputFormPart('ONLYOFFICE_DOC_SERV_SECURE_KEY', $langs->trans('OnlyOfficeDocServerSecureKey'), '', $metas, '' , $langs->trans('OnlyOfficeDocServerSecureKeyHelp'));
 
+
+// Work in progresse message
+$title = $langs->trans('OnlyOfficeDocServerCanSaveFile');
+$title.= '<div class="error" >ATTENTION : Cette option du module est en cours de développement, il ne doit pas être déployé en production ou sur un serveur public au risque d\'exposer votre server à des hackers</div>';
+
+_printOnOff('OOFFICE_ACTIVE_SAVE_FILE', $title);
 
 
 print '</table>';
