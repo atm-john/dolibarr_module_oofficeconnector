@@ -152,7 +152,7 @@ if(!empty($goBackUrl)){
     $params["editorConfig"]["customization"]["goback"]["text"] = $langs->trans('GobackToDolibarr');
 }
 
-$token = \Firebase\JWT\JWT::encode($params, $GLOBALS['MACHINEKEY']);
+$token = \Firebase\JWT\JWT::encode($params, $OOffice->documentServerSecureKey);
 $params['token'] = $token ;
 $params = json_encode($params);
 

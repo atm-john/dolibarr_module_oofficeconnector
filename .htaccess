@@ -1,0 +1,5 @@
+<Files file-server.php>
+    AuthType none
+    Satisfy Any
+    Allow from All
+</Files>
