@@ -109,7 +109,7 @@ $params = [
         "callbackUrl" => $saveFileUrl,
 
         "customization" => [
-            "forcesave"=> true,
+            "forcesave"=> !empty($conf->global->OOFFICE_ACTIVE_SAVE_FILE),
 
 
             "chat"=> true,
