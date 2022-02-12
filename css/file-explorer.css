@@ -261,10 +261,12 @@
 
 .icon.folder{
 	background-image: url(../img/places/folder-blue.svg);
+	text-indent: -99999px;
 }
 
 .icon.folder.full{
 	background-image: url(../img/places/folder-blue-open.svg);
+	text-indent: -99999px;
 }
 
 .icon.file {
@@ -314,11 +316,13 @@
 .icon.file.f-rtf,
 .icon.file.f-odt{
 	background-image: url(../img/mimetypes/wps-office-doc.svg);
+	text-indent: -99999px;
 }
 
 .icon.file.f-xls,
 .icon.file.f-xlsx {
 	background-image: url(../img/mimetypes/application-table.svg);
+	text-indent: -99999px;
 }
 
 
@@ -346,6 +350,7 @@
 .icon.file.f-zip,
 .icon.file.f-7z {
 	background-image: url(../img/mimetypes/application-archive.svg);
+	text-indent: -99999px;
 }
 
 .icon.file.f-html,
